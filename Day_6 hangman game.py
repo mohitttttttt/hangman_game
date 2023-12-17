@@ -12,6 +12,7 @@ lives = 6
 from hangman_art import logo,stages
 print(logo)
 
+all_guess = []
 display = []
 for _ in range(word_length):
     display += "_"
@@ -19,8 +20,8 @@ for _ in range(word_length):
 while not end_of_game:
     guess = input("Guess a letter: ").lower()
 
-    if guess in display:
-        print(f"You've already guessed {guess}")
+    if guess in all_guess:
+        print(f"You've already guessed {guess}\n")
 
     # if guess in word, changing _ in display list with the word.
     for position in range(word_length):
@@ -44,5 +45,5 @@ while not end_of_game:
         end_of_game = True
         print("You win.")
 
-    
+    all_guess.append(guess)
     print(stages[lives])
